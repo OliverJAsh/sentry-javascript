@@ -1,4 +1,4 @@
-import { captureException, captureMessage, getCurrentHub, Scope, withScope } from '@sentry/core';
+import { captureException, captureMessage, getCurrentHub, Scope, SentryError, withScope } from '@sentry/core';
 import { Integration, SentryEvent } from '@sentry/types';
 import { getGlobalObject } from '@sentry/utils/misc';
 
@@ -34,7 +34,7 @@ export class Ember implements Integration {
    */
   public setupOnce(): void {
     if (!this.Ember) {
-      return;
+      throw new SentryError('EmberIntegration is missing an Ember instance');
     }
 
     const oldOnError = this.Ember.onerror;
