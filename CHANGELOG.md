@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- [utils] fix: Dont mutate original input in decycle util function
 - [utils] ref: Update wrap method to hide internal sentry flags
 - [utils] fix: Make internal Sentry flags non-enumerable in fill util
 
